@@ -6,6 +6,7 @@ from dataclasses import dataclass, asdict
 @dataclass
 class Song:
     """Represents a song and its audio features."""
+        #E.g: 1, Sunrise City, Neon Echo, pop, happy, 0.82, 118, 0.84, 0.79, 0.18
     id: int
     title: str
     artist: str
@@ -21,10 +22,10 @@ class Song:
 @dataclass
 class UserProfile:
     """Stores a user's listening preferences used for scoring."""
-    favorite_genre: str
-    favorite_mood: str
-    target_energy: float
-    likes_acoustic: bool
+    favorite_genre: str #E.g: pop, lofi, jazz, and etc. 
+    favorite_mood: str # E.g: happy, chill, sad, and etc.
+    target_energy: float # Scale from 0.0 to 1.0
+    likes_acoustic: bool # true or false
 
 
 class Recommender:
