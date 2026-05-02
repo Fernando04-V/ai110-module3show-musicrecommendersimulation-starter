@@ -5,10 +5,7 @@ from dataclasses import dataclass, asdict
 
 @dataclass
 class Song:
-    """
-    Represents a song and its attributes.
-    Required by tests/test_recommender.py
-    """
+    """Represents a song and its audio features."""
     id: int
     title: str
     artist: str
@@ -23,10 +20,7 @@ class Song:
 
 @dataclass
 class UserProfile:
-    """
-    Represents a user's taste preferences.
-    Required by tests/test_recommender.py
-    """
+    """Stores a user's listening preferences used for scoring."""
     favorite_genre: str
     favorite_mood: str
     target_energy: float
@@ -34,14 +28,13 @@ class UserProfile:
 
 
 class Recommender:
-    """
-    OOP implementation of the recommendation logic.
-    Required by tests/test_recommender.py
-    """
+    """Scores and ranks songs against a UserProfile."""
+
     def __init__(self, songs: List[Song]):
         self.songs = songs
 
     def recommend(self, user: UserProfile, k: int = 5) -> List[Song]:
+        """Return the top k Song objects ranked by score for this user."""
         user_prefs = {
             "genre": user.favorite_genre,
             "mood": user.favorite_mood,
@@ -60,6 +53,7 @@ class Recommender:
         return [song for song, _ in ranked[:k]]
 
     def explain_recommendation(self, user: UserProfile, song: Song) -> str:
+        """Return a plain-English explanation of why a song was recommended."""
         user_prefs = {
             "genre": user.favorite_genre,
             "mood": user.favorite_mood,
@@ -71,10 +65,7 @@ class Recommender:
 
 
 def load_songs(csv_path: str) -> List[Dict]:
-    """
-    Loads songs from a CSV file.
-    Required by src/main.py
-    """
+    """Parse a songs CSV and return a list of song dicts with typed fields."""
     songs = []
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -140,13 +131,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
 
 
 def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
-    """
-    Functional implementation of the recommendation logic.
-    Required by src/main.py
-
-    Ranking rule: sort by score descending; break ties by energy proximity.
-    Returns a list of (song_dict, score, explanation) tuples.
-    """
+    """Score all songs, sort by score descending, and return the top k as (song, score, explanation) tuples."""
     target_energy = float(user_prefs.get("energy", 0.5))
 
     scored = [

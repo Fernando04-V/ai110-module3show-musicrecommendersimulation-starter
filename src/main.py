@@ -9,11 +9,19 @@ You will implement the functions in recommender.py:
 - recommend_songs
 """
 
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(__file__))
+
 from recommender import load_songs, recommend_songs
+
+_DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "songs.csv")
 
 
 def main() -> None:
-    songs = load_songs("data/songs.csv") 
+    songs = load_songs(_DATA_PATH)
+    print(f"Loaded songs: {len(songs)}")
 
     # Starter example profile
     user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
