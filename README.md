@@ -29,6 +29,12 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+- Answer Prompt
+  - The system uses the following features: 
+  Genre, mood, energy, and acousticness. Each of these are used for scoring system
+  - the user profile stores the following: favorite_genre, favorite_mood, target_energy, and likes_acoustic
+  -The recommneder functions as a sort of reward system where points are given to the song based on the features.
+  - the system reccomends the highest score
 ---
 
 ## Getting Started
