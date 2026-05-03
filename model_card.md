@@ -38,10 +38,10 @@ Prompts:
 Avoid code here. Pretend you are explaining the idea to a friend who does not program.
 
 # Answer Prompt
-    - The system uses the following features: Mood, energy level, genre, and acousticness. These features of a song are used in the scoring system to reccomend to the user.
-    - The following preferences of the user are considered: favorite genre, favorite / current mood, energy level, and wether or not the user likes acoustic.
-    - The model compares each song in the catalog against the user's profile using these factors and then adds up the points. A genre match is worth at most two points because genre is the strongest signal of taste. A mood match is worth 1.5 points. Energy is scored continuously. For example, a song that is very close to the user's target energy gets almost a full point, while a song that is far off gets close to zero. Finally, if the song's acoustic character matches what the user said they like, it gets an extra 0.8 points. The song with the highest total score is recommended first, and ties are broken by whichever song has the energy level closest to the user's target.
-    - Filled out the empty place holder functions. Added the scoring system. Added more songs to the csv file. 
+- The system uses the following features: Mood, energy level, genre, and acousticness. These features of a song are used in the scoring system to reccomend to the user.
+- The following preferences of the user are considered: favorite genre, favorite / current mood, energy level, and wether or not the user likes acoustic.
+- The model compares each song in the catalog against the user's profile using these factors and then adds up the points. A genre match is worth at most two points because genre is the strongest signal of taste. A mood match is worth 1.5 points. Energy is scored continuously. For example, a song that is very close to the user's target energy gets almost a full point, while a song that is far off gets close to zero. Finally, if the song's acoustic character matches what the user said they like, it gets an extra 0.8 points. The song with the highest total score is recommended first, and ties are broken by whichever song has the energy level closest to the user's target.
+- Filled out the empty place holder functions. Added the scoring system. Added more songs to the csv file. 
 
 ---
 
@@ -57,40 +57,40 @@ Prompts:
 - Are there parts of musical taste missing in the dataset 
 
 # Answer Prompt
-    - The model uses 18 songs from the csv file.
-    - Here is the complete list of the genres being represented:
-        - Pop
-        - Indie Pop
-        - Lofi
-        - Rock
-        - Ambient
-        - Jazz
-        - Synthwave
-        - Hip-Hop
-        - Soul
-        - Classical
-        - Folk
-        - EDM
-        - R&B
-        - Country
-        - Blues
-    - Here is the complete list of the moods being represented:
-        - Happy
-        - Chill
-        - Intense
-        - Relaxed
-        - Focused
-        - Moody
-        - Energetic
-        - Romantic
-        - Melancholic
-        - Nostalgic
-        - Euphoric
-        - Sad
-        - Peaceful
-        - Longing
-    - Data was added from the original csv file.
-    - There are a other music tastes that were left out like Latin Rock and K-Pop.
+- The model uses 18 songs from the csv file.
+- Here is the complete list of the genres being represented:
+    - Pop
+    - Indie Pop
+    - Lofi
+    - Rock
+    - Ambient
+    - Jazz
+    - Synthwave
+    - Hip-Hop
+    - Soul
+    - Classical
+    - Folk
+    - EDM
+    - R&B
+    - Country
+    - Blues
+- Here is the complete list of the moods being represented:
+    - Happy
+    - Chill
+    - Intense
+    - Relaxed
+    - Focused
+    - Moody
+    - Energetic
+    - Romantic
+    - Melancholic
+    - Nostalgic
+    - Euphoric
+    - Sad
+    - Peaceful
+    - Longing
+- Data was added from the original csv file.
+- There are a other music tastes that were left out like Latin Rock and K-Pop.
 
 ---
 
@@ -154,6 +154,12 @@ Prompts:
 
 No need for numeric metrics unless you created some.
 
+# Answer Prompt
+- I made the profile "Storm Runner Fan" to test if the a user having the identical attributes of the song, Storm Runner, yields in a perfect socre and having the song reccomended the most. After testing, it does. 
+- What i looked for in the recoomendation is wether or not the top result was obvious. Somone who likes to listen to Storm Runner alot should be reccomended storm runner the most out of all the songs in the catalog. 
+- Something the the model suprised me was how detailed it was able to make the gap between the songs being reccomended. In the Chill Lofi profile, we can see how "Library Rain" scored a 5.27 and "Midnight Coding" scored a 5.26. This showed me that there was indeed a difference between similar songs.
+- I ran the " Storm Runner Fan" to affirm the model's perfect scoring.
+
 ---
 
 ## 8. Future Work  
@@ -167,6 +173,12 @@ Prompts:
 - Improving diversity among the top results  
 - Handling more complex user tastes  
 
+# Answer Prompt
+- Something i would add into the future is something like the model evaluating the user's history or the amount of times they skipped over a song. For instance, Apple Music for some reason keeps on reccomending me the songs that i continusly skip. A feature where where it removes points for the amount of skips a song recives could be interesting for future work. 
+- Perhaps providing a reason as to why some songs did not get reccomended even though they either were close to being matched.
+- A diversity penalty could be added so that once a genre or mood has already appeared in the top results, the next song from that same category gets a small score deduction, pushing more varied options into the list. 
+- I would make the user profile's more dynamic rather than static to accept more complex user tastes.
+
 ---
 
 ## 9. Personal Reflection  
@@ -178,3 +190,8 @@ Prompts:
 - What you learned about recommender systems  
 - Something unexpected or interesting you discovered  
 - How this changed the way you think about music recommendation apps  
+
+# Answer Prompt
+- Because of this module, I learned a more in-depth view on reccomender system. Beforehand, i heard or somewhat knew that systems as such use like a sort of points system where the movie, or in this case the song, with the most points gets reccoemnded the most. Now i got to see that not only this is sort of true, but i got to personal work with such system.
+- Something that i find interesting upon working with a reccomender system is that how easy it is to made a system so biased towards something. My model awards more points for matching genre, but i can see where i could have tweaked it and awarded more points for matching mood instead. I belive the lesson here is to have a balance and not "over favor" one factor while completly ignoring the rest. 
+- I now see why in some days i feel like i keep on being reccomended the same songs. I believe that part of the issue is that i am only giving the system the same data and i do not stop listening to the same ten songs each day.

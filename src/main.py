@@ -50,6 +50,12 @@ profiles = {
         "energy": 0.33,
         "likes_acoustic": True,
     },
+    "Storm Runner Fan": {
+        "genre": "rock",
+        "mood": "intense",
+        "energy": 0.91,
+        "likes_acoustic": False,
+    },
 }
 
 
