@@ -29,7 +29,7 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
-- Answer Prompt
+# Answer Prompt
   - The system uses the following features: 
   Genre, mood, energy, and acousticness. Each of these are used for scoring system
   - the user profile stores the following: favorite_genre, favorite_mood, target_energy, and likes_acoustic
@@ -80,6 +80,11 @@ Use this section to document the experiments you ran. For example:
 - What happened when you added tempo or valence to the score
 - How did your system behave for different types of users
 
+# Answer Prompt
+- Chaning the eight on a genre from 2.0 to 0.5 impacts the outputs in which the songs are recommended. Instead of rewarding the songs that matches with the user's interest in the same genre, it sort of does the opposite as songs that are ranked first via the points given to the category at times drop out from the top three.
+- Adding tempo or valence to the score merely just adds more points to the song.
+- It behaves differently according to the interest of the user. It specially awards the songs that match with the user's same interest in mood and category. If Either of these two attributes lack or are missing, then the system will not reccomend such songs due to the points it is missing out.
+
 ---
 
 ## Limitations and Risks
@@ -94,6 +99,11 @@ Examples:
 
 You will go deeper on this in your model card.
 
+# Answer Prompt
+- Does not factor tempo, valence, and danceability in the song evaluation reccomendation
+- Does not analyze lyrics nor language. The system only works with attributes of a song as found in the csv file. 
+- System favors genre over mood although these two are the biggest factors to reccomending a song.
+
 ---
 
 ## Reflection
@@ -106,6 +116,10 @@ Write 1 to 2 paragraphs here about what you learned:
 
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
+
+# Answer Prompt
+- Music reccomenders analyze a song and the interest's of the user and makes an evaluation based on a points system that reccoemdns the song with the most points.
+- Bias and unfairness are two things that can show up in such systems in the cases where the user's preferences does not match with what the system awards the most (E.g.  Genre & mood). 
 
 
 ## [**CLI Verification from Phase 3 Step 4**](assets/cliverification.png)
