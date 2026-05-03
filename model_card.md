@@ -104,6 +104,22 @@ Prompts:
 - Any patterns you think your scoring captures correctly  
 - Cases where the recommendations matched your intuition  
 
+# Answer Prompt
+- The model yields the most reasonable results when the interest of a user alligns with aleast one song. For example, take for example the Chill lofi profile where the output checks out with the profile's interest:  
+    - Profile: Chill Lofi; genre=lofi, mood=chill, energy=0.38, acoustic=True
+
+        Library Rain (Paper Lanterns)  —  Score: 5.27
+        Because: Genre matches your favorite: lofi; Mood matches: chill; Energy level is a close match (0.35); Acoustic feel matches your preference
+
+        Midnight Coding (LoRoom)  —  Score: 5.26
+        Because: Genre matches your favorite: lofi; Mood matches: chill; Energy level is a close match (0.42); Acoustic feel matches your preference
+
+        Focus Flow (LoRoom)  —  Score: 3.78
+        Because: Genre matches your favorite: lofi; Energy level is a close match (0.4); Acoustic feel matches your preference
+
+- I think one the patterns the model captures quite well is the combination between genre and mood. When both of these features of the user match a song it allows for the same song to raise greatly in points. If either of them are missing, then the points does not increase as much. Take for example the Chill Lofi Profile, we can notice how the top two songs are way above the third song most reccommend song in terms of score; the top two songs align with the user's mood and genre while "Focus Flow" the matching mood.
+- Cases like chill lofi and Deep Intense Rock matches my intution pretty well. Like discussed above with chill lofi, intense rock having Storm Runner as the number one is reasonable.
+
 ---
 
 ## 6. Limitations and Bias 
@@ -115,7 +131,13 @@ Prompts:
 - Features it does not consider  
 - Genres or moods that are underrepresented  
 - Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+- Ways the scoring might unintentionally favor some users 
+
+# Answer Prompt
+- The model ignores the following features that are present in each song: tempo_bpm,valence,and danceability.
+- There are some genres and moods that only appear once as in the cases of blues and longing. 
+- Genre carries a weight of 2.0 out of a maximum of 5.3 points. This means a song that matches genre but gets everything else wrong will almost always outrank a song that matches mood, energy, and acousticness but has a different genre. For example, the High-Energy Pop profile, Gym Hero scored 2.87 with only a genre match, while Night Drive Loop, which matched energy almost perfectly at 0.95 energy score, scored only 0.95 because it was synthwave instead of pop. A real listener might actually prefer Night Drive Loop for a pop-energy session, but the genre gate overrules that.
+- The model may untitentionally favor some users whose taste aligns exactly with a well-represented genre in the catalog as in the case of lofi. Someone who says "indie" rather than "inde pop" does not get points for an indie pop song despite the obvious match.
 
 ---
 
