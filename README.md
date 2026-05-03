@@ -108,6 +108,8 @@ Write 1 to 2 paragraphs here about what you learned:
 - about where bias or unfairness could show up in systems like this
 
 
+## [**CLI Verification from Phase 3 Step 4**](assets/cliverification.png)
+
 ---
 
 ## 7. `model_card_template.md`
